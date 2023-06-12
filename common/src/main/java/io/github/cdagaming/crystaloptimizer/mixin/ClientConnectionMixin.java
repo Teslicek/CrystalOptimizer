@@ -44,7 +44,7 @@ public class ClientConnectionMixin {
                     if (hitResult == null) {
                         return;
                     }
-                    if (hitResult.getType() == HitResult.Type.ENTITY && (entity = (entityHitResult = (EntityHitResult) hitResult).getEntity()) instanceof EndCrystal) {
+                    if (hitResult.getType() == HitResult.Type.ENTITY && ((entity = (entityHitResult = (EntityHitResult) hitResult).getEntity()) instanceof EndCrystal || entity instanceof Slime || entity instanceof MagmaCube)) {
                         MobEffectInstance weakness = mc.player.getEffect(MobEffects.WEAKNESS);
                         MobEffectInstance strength = mc.player.getEffect(MobEffects.DAMAGE_BOOST);
                         if (!(weakness == null || strength != null && strength.getAmplifier() > weakness.getAmplifier() || ClientConnectionMixin.this.isTool(mc.player.getMainHandItem()))) {
